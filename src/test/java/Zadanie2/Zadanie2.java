@@ -87,10 +87,10 @@ public class Zadanie2 {
     @And("^he adds \"([^\"]*)\" pieces of \"([^\"]*)\" size to cart$")
     public void heAddThemToCart(String size, String quantity) throws Throwable {
         new Select(driver.findElement(By.id("group_1"))).selectByVisibleText("M");
-        driver.findElement(By.id("group_1")).click();
-        driver.findElement(By.id("quantity_wanted")).click();
-        driver.findElement(By.id("quantity_wanted")).clear();
-        driver.findElement(By.id("quantity_wanted")).sendKeys("5");
+        WebElement webElement = driver.findElement(By.xpath("//*[@class='material-icons touchspin-up']"));
+        for(int i=0; i<5; i++){
+            webElement.click();
+            Thread.sleep(2000);}
         driver.findElement(By.xpath("(//button[@type='submit'])[2]")).click();
     }
 
