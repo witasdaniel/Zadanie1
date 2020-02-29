@@ -1,6 +1,7 @@
 package Zadanie2;
 
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -83,8 +84,8 @@ public class Zadanie2 {
         driver.findElement(By.id("group_1")).click();
     }
 
-    @Then("^he adds 5 pieces of M size to cart$")
-    public void heAddThemToCart() {
+    @And("^he adds \"([^\"]*)\" pieces of \"([^\"]*)\" size to cart$")
+    public void heAddThemToCart(String size, String quantity) throws Throwable {
         new Select(driver.findElement(By.id("group_1"))).selectByVisibleText("M");
         driver.findElement(By.id("group_1")).click();
         driver.findElement(By.id("quantity_wanted")).click();
@@ -165,4 +166,5 @@ public class Zadanie2 {
         driver.findElement(By.cssSelector(".logout")).click();
         driver.quit();
     }
+
 }

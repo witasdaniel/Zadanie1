@@ -27,6 +27,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import static java.lang.Thread.sleep;
 import static org.hamcrest.core.IsNot.not;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
@@ -36,10 +38,11 @@ public class ClientSteps {
   private Map<String, Object> vars;
   JavascriptExecutor js;
   @Given("^open website https://prod-kurs\\.coderslab\\.pl/index\\.php$")
-  public void setUp() {
+  public void setUp() throws InterruptedException{
     System.setProperty("webdriver.chrome.driver","src/main/resources/drivers/chromedriver.exe");
     driver = new ChromeDriver();
     driver.get("https://prod-kurs.coderslab.pl/index.php");
+      sleep(2000);
   }
   @When("^he chooses to log in$")
   public void heChoosesToLogin() throws InterruptedException {
